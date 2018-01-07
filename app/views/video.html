@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/video.css">
+
+</head>
+<body>
+<div class="video-box">
+
+</div>
+<script src="/js/socket.io.js"></script>
+<script src="/js/jquery-3.2.1.js"></script>
+<script src="/js/video.js"></script>
+<script>
+    var socket = io('http://localhost:8888');
+    socket.on("server",function (e) {
+        console.log(e);
+    })
+    document.onkeydown=function(e){
+        socket.emit("client",String.fromCharCode(e.keyCode));
+    }
+</script>
+</body>
+</html>
